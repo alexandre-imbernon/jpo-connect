@@ -4,10 +4,18 @@ include 'config/database.php';
 
 $jpo_id = isset($_GET['jpo_id']) ? intval($_GET['jpo_id']) : null;
 
+// Récupérer les données de la JPO sélectionnée
+$jpo = null;
+if ($jpo_id) {
+    $stmt = $pdo->prepare("SELECT * FROM jpo WHERE id = ?");
+    $stmt->execute([$jpo_id]);
+    $jpo = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'register') {
     $name = htmlspecialchars($_POST['name']);
     $email = htmlspecialchars($_POST['email']);
-    $location = htmlspecialchars($_POST['location']);
+    $location = htmlspecialchars($jpo ? $jpo['location'] : $_POST['location']); // Get location from JPO or POST
 
     // Vérifier si l'utilisateur existe déjà dans la table `users`
     $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
@@ -23,9 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
         $user_id = $user['id'];
     }
 
-    // Utiliser l'ID de la JPO reçu en paramètre
+    // Ajouter l'inscription à la base de données
     if ($jpo_id) {
-        // Ajouter l'inscription à la base de données
         $stmt = $pdo->prepare("INSERT INTO registrations (user_id, jpo_id, registered_at, status) VALUES (?, ?, NOW(), 'inscrit')");
         if ($stmt->execute([$user_id, $jpo_id])) {
             echo "<p>Inscription réussie !</p>";
@@ -33,7 +40,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
             echo "<p>Erreur lors de l'inscription. Veuillez réessayer.</p>";
         }
     } else {
-        echo "<p>Erreur: JPO non trouvée.</p>";
+        $stmt = $pdo->prepare("INSERT INTO registrations (user_id, jpo_id, registered_at, status) VALUES (?, NULL, NOW(), 'inscrit')");
+        if ($stmt->execute([$user_id])) {
+            echo "<p>Inscription réussie sans JPO spécifique !</p>";
+        } else {
+            echo "<p>Erreur lors de l'inscription. Veuillez réessayer.</p>";
+        }
     }
 }
 ?>
@@ -59,25 +71,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
             <p>Retrouvez-nous à nos différentes portes ouvertes !</p>
         </div>
 
-        <div class="register-form" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
-            <form action="register.php?jpo_id=<?php echo $jpo_id; ?>" method="POST" style="display: flex; flex-direction: column; height: auto;">
+        <div class="register-form" style="flex: 1; display: flex; flex-direction: column; justify-content: center; margin-top: 20%;">
+            <form action="register.php?jpo_id=<?php echo $jpo_id; ?>" method="POST" style="display: flex; flex-direction: column;">
                 <input type="hidden" name="action" value="register">
                 <div style="margin-bottom: 10px;">
                     <label for="name">Nom :</label>
-                    <input type="text" id="name" name="name" required style="width: 100%; height: 40px;">
+                    <input type="text" id="name" name="name" required style="width: 100%">
                 </div>
                 <div style="margin-bottom: 10px;">
                     <label for="email">Email :</label>
-                    <input type="email" id="email" name="email" required style="width: 100%; height: 40px;">
+                    <input type="email" id="email" name="email" required style="width: 100%">
                 </div>
                 <div style="margin-bottom: 10px;">
                     <label for="location">Lieu :</label>
-                    <select id="location" name="location" required style="width: 100%; height: 40px;">
-                        <option value="marseille">Marseille</option>
-                        <option value="cannes">Cannes</option>
-                        <option value="toulon">Toulon</option>
-                        <option value="martigues">Martigues</option>
-                    </select>
+                    <?php if ($jpo): ?>
+                        <input type="text" id="location" name="location" value="<?php echo htmlspecialchars($jpo['location']); ?>" readonly style="width: 100%; height: 40px;">
+                    <?php else: ?>
+                        <select id="location" name="location" required style="width: 100%; height: 40px;">
+                            <option value="marseille">Marseille</option>
+                            <option value="cannes">Cannes</option>
+                            <option value="toulon">Toulon</option>
+                            <option value="martigues">Martigues</option>
+                        </select>
+                    <?php endif; ?>
                 </div>
                 <div>
                     <button type="submit" class="btn" style="width: 100%; height: 40px;">S'inscrire</button>
