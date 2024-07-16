@@ -42,24 +42,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
     <section class="register-section" style="display: flex; justify-content: space-between; align-items: flex-start; padding: 20px;">
         <div class="register-info" style="flex: 1; margin-right: 20px;">
             <h2>Inscription aux Journées Portes Ouvertes</h2>
-            <p>Nos écoles vous ouvrent leurs portes pour découvrir nos différents campus. Nos équipes et nos étudiants seront présents pour vous faire découvrir l’ensemble de nos cursus à travers des ateliers de découverte et des stands dédiés à nos différentes formations.</p>
-            <p>Nous sommes présents à Marseille, Cannes, Toulon et Martigues. Venez nous rendre visite et découvrez pourquoi La Plateforme est le meilleur choix pour votre avenir.</p>
-            <a href="unregister.php" class="btn">Se désinscrire</a>
+            <p>Les métiers du numérique vous attirent ? 👨‍💻 Ça tombe bien, c’est un secteur en plein essor !</p>
+            <p>Pour vous former, rejoignez La Plateforme, le campus méditerranéen du numérique ! 🙌</p>
+            <p>Nos équipes et étudiants seront présents pour vous faire découvrir l'ensemble de nos cursus à travers des ateliers et des stands dédiés à nos différentes formations :</p>
+            <p>✔️ Bachelor / Bac +3 (5 spécialités : Web & Web Mobile, Logiciel, IA, Cybersécurité, Systèmes Immersifs)</p>
+            <p>✔️ Master of Science (MSc) / Bac +5 (2 spécialités : Web & Web Mobile, IA)</p>
+            <p>✔️ Post-graduate / Bac +6 : sur l’intelligence artificielle avec l’École Centrale de Marseille, et sur le management d'innovation.</p>
+            <p>Au programme :</p>
+            <p>Accueil</p>
+            <p>Présentation de l'école et des formations</p>
+            <p>Visite de l'école, ateliers & stands</p>
+            <p>La Plateforme, c’est :</p>
+            <p>👉 4 écoles à Marseille, Cannes, Toulon et Martigues !</p>
+            <p>👉 Des formations en informatique ouvertes à tous, reconnues par l’État, en alternance et sans frais de formation !</p>
+            <p>Vous avez envie de devenir développeur, expert en cyber-sécurité, spécialiste de l’intelligence artificielle, ou ingénieur 3D ?</p>
+            <p>Retrouvez-nous à nos différentes portes ouvertes !</p>
         </div>
-        <div class="register-form" style="flex: 1;">
-            <form action="register.php?jpo_id=<?php echo $jpo_id; ?>" method="POST">
+
+        <div class="register-form" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+            <form action="register.php?jpo_id=<?php echo $jpo_id; ?>" method="POST" style="display: flex; flex-direction: column; height: auto;">
                 <input type="hidden" name="action" value="register">
                 <div style="margin-bottom: 10px;">
                     <label for="name">Nom :</label>
-                    <input type="text" id="name" name="name" required style="width: 100%;">
+                    <input type="text" id="name" name="name" required style="width: 100%; height: 40px;">
                 </div>
                 <div style="margin-bottom: 10px;">
                     <label for="email">Email :</label>
-                    <input type="email" id="email" name="email" required style="width: 100%;">
+                    <input type="email" id="email" name="email" required style="width: 100%; height: 40px;">
                 </div>
                 <div style="margin-bottom: 10px;">
                     <label for="location">Lieu :</label>
-                    <select id="location" name="location" required style="width: 100%;">
+                    <select id="location" name="location" required style="width: 100%; height: 40px;">
                         <option value="marseille">Marseille</option>
                         <option value="cannes">Cannes</option>
                         <option value="toulon">Toulon</option>
@@ -67,7 +80,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
                     </select>
                 </div>
                 <div>
-                    <button type="submit" class="btn" style="width: 100%;">S'inscrire</button>
+                    <button type="submit" class="btn" style="width: 100%; height: 40px;">S'inscrire</button>
+                    <p style="margin-top: 10px;">Un empêchement ? Cliquez <a href="unregister.php" class="link">ici</a> pour vous désinscrire</p>
                 </div>
             </form>
         </div>
