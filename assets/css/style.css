@@ -41,7 +41,6 @@ p {
 }
 
 form {
-    background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -88,4 +87,53 @@ footer {
     position: relative;
     width: 100%;
     
+}
+
+label {
+    color: white; /* Remplacez par la couleur souhaitée */
+}
+
+/* styles.css */
+.register-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.register-info {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.register-form {
+    flex: 1;
+}
+
+.register-form div {
+    margin-bottom: 10px;
+}
+
+.register-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.register-form input,
+.register-form select {
+    width: 100%;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #FFF;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
 }
