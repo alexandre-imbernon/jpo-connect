@@ -51,9 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
 ?>
 
 <main>
+<h2 style="text-align: center;">Inscription aux Journées Portes Ouvertes</h2>
     <section class="register-section" style="display: flex; justify-content: space-between; align-items: flex-start; padding: 20px;">
         <div class="register-info" style="flex: 1; margin-right: 20px;">
-            <h2>Inscription aux Journées Portes Ouvertes</h2>
             <p>Les métiers du numérique vous attirent ? 👨‍💻 Ça tombe bien, c’est un secteur en plein essor !</p>
             <p>Pour vous former, rejoignez La Plateforme, le campus méditerranéen du numérique ! 🙌</p>
             <p>Nos équipes et étudiants seront présents pour vous faire découvrir l'ensemble de nos cursus à travers des ateliers et des stands dédiés à nos différentes formations :</p>
