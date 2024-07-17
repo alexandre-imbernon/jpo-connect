@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
                     <?php if ($jpo): ?>
                         <input type="text" id="location" name="location" value="<?php echo htmlspecialchars($jpo['location']); ?>" readonly style="width: 100%; height: 40px;">
                     <?php else: ?>
-                        <select id="location" name="location" required style="width: 100%; height: 40px;">
+                        <select id="location" name="location" required style="width: 100%">
                             <option value="marseille">Marseille</option>
                             <option value="cannes">Cannes</option>
                             <option value="toulon">Toulon</option>
