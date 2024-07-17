@@ -1,6 +1,7 @@
 /* Importation des polices Google */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+/* Global Styles */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -9,6 +10,7 @@ body {
     color: #fff; /* Texte en blanc sur le fond bleu */
 }
 
+/* Header Styles */
 header {
     background-color: #FFFFFF; /* Couleur du header */
     color: #333;
@@ -17,16 +19,13 @@ header {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.englobe {
-    padding: 30px; /* Ajuste la valeur selon tes besoins */
-}
-
 header h1 {
     margin: 0;
     font-size: 2.5em;
     color: #0062FF; /* Titre en bleu */
 }
 
+/* Main Styles */
 main {
     background-color: #0062FF; /* Fond bleu pour le corps */
 }
@@ -40,6 +39,7 @@ p {
     font-size: 16px;
 }
 
+/* Form Styles */
 form {
     padding: 20px;
     border-radius: 8px;
@@ -54,6 +54,7 @@ label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
+    color: white; /* Couleur des labels */
 }
 
 input[type="text"],
@@ -65,6 +66,7 @@ select {
     border-radius: 4px;
 }
 
+/* Button Styles */
 button[type="submit"] {
     background-color: #0062FF; /* Couleur des boutons */
     color: #fff;
@@ -79,21 +81,16 @@ button[type="submit"]:hover {
     background-color: #004494; /* Couleur au survol */
 }
 
+/* Footer Styles */
 footer {
     background-color: #313131;
     color: #FFFFFF;
     text-align: center;
     padding: 20px;
-    position: relative;
     width: 100%;
-    
 }
 
-label {
-    color: white; /* Remplacez par la couleur souhaitée */
-}
-
-/* styles.css */
+/* Register Section Styles */
 .register-section {
     display: flex;
     justify-content: space-between;
@@ -124,6 +121,7 @@ label {
     width: 100%;
 }
 
+/* Button Class */
 .btn {
     display: inline-block;
     padding: 10px 20px;
@@ -135,5 +133,5 @@ label {
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Couleur au survol */
 }

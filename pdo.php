@@ -9,7 +9,7 @@ $jpos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <main style="padding: 30px">
-    <h2>Envie de nous rejoindre ? Nos prochaines portes ouvertes:</h2>
+    <h2>Envie de nous rejoindre ? Retrouvez nos prochaines #JPO:</h2>
     
     <form id="search-form" method="get" action="" style="margin-bottom: 20px;">
         <input type="text" id="search-input" name="search" placeholder="Rechercher par ville..." style="padding: 10px; width: 80%; border: 1px solid #ccc; border-radius: 5px;">
