@@ -28,14 +28,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <main>
     <section class="unregister">
-        <h2>Désinscription aux Journées Portes Ouvertes</h2>
         <form action="unregister.php" method="POST">
             <div>
                 <label for="email">Email :</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required placeholder="Pour vous désinscrire, veuillez saisir votre mail ici">
             </div>
             <div>
-                <button type="submit" class="btn">Se désinscrire</button>
+                <button type="submit" class="btn">Me désinscrire</button>
             </div>
         </form>
     </section>
